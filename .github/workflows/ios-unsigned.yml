@@ -52,7 +52,7 @@ jobs:
           APP=build/Payload/App.app
           plutil -lint "$APP/Info.plist"
           test -s "$APP/public/index.html"
-          lipo -verify_arch arm64 "$APP/App"
+          lipo "$APP/App" -verify_arch arm64
           file "$APP/App"
           (cd build && zip -qry "../artifacts/openGym-$VER-unsigned.ipa" Payload)
           unzip -t "artifacts/openGym-$VER-unsigned.ipa" | tail -1
